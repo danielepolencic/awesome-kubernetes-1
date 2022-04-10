@@ -1,0 +1,5075 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A curated list of awesome IT projects and resources. Inspired by the awesome list.">
+      
+      
+        <meta name="author" content="nubenetes@gmail.com">
+      
+      
+        <link rel="canonical" href="https://nubenetes.com/introduction/">
+      
+      <link rel="icon" href="../images/favicon-car.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.6">
+    
+    
+      
+        <title>Microservice Architecture. From Java EE To Cloud Native. Openshift VS Kubernetes - Nubenetes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.9d5733d3.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../static/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-2H8F93KE5B"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-2H8F93KE5B",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2H8F93KE5B"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-microservice-architecture-from-java-ee-to-cloud-native-openshift-vs-kubernetes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Nubenetes" class="md-header__button md-logo" aria-label="Nubenetes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nubenetes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Microservice Architecture. From Java EE To Cloud Native. Openshift VS Kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nubenetes/awesome-kubernetes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nubenetes/awesome-kubernetes
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Intro
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sre/" class="md-tabs__link">
+        SRE
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../devops/" class="md-tabs__link">
+        DevOps
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../devsecops/" class="md-tabs__link">
+        DevSecOps
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../noops/" class="md-tabs__link">
+        NoOps
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../docker/" class="md-tabs__link">
+      Docker
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../kubernetes/" class="md-tabs__link">
+        K8s
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../openshift/" class="md-tabs__link">
+        OpenShift
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../rancher/" class="md-tabs__link">
+        Rancher
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cicd/" class="md-tabs__link">
+        CI/CD
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../monitoring/" class="md-tabs__link">
+        Montrg
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../iac/" class="md-tabs__link">
+        Infra Prov
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ansible/" class="md-tabs__link">
+        Config Mgmt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../databases/" class="md-tabs__link">
+        DB
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../message-queue/" class="md-tabs__link">
+      Data Pipeline
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../servicemesh/" class="md-tabs__link">
+        Service Mesh
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../demos/" class="md-tabs__link">
+        Demos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../public-cloud-solutions/" class="md-tabs__link">
+        Cloud
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/" class="md-tabs__link">
+        APIs
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../devel-sites/" class="md-tabs__link">
+        Dev
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../qa/" class="md-tabs__link">
+        QA
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project-management-methodology/" class="md-tabs__link">
+        Project Mgmt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../other-awesome-lists/" class="md-tabs__link">
+        Refs+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recruitment/" class="md-tabs__link">
+        Hiring
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../customer/" class="md-tabs__link">
+      Clients
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Nubenetes" class="md-nav__button md-logo" aria-label="Nubenetes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Nubenetes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nubenetes/awesome-kubernetes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nubenetes/awesome-kubernetes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Intro
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Intro" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Intro
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Microservice Architecture. From Java EE To Cloud Native. Openshift VS Kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Microservice Architecture. From Java EE To Cloud Native. Openshift VS Kubernetes
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pets-vs-cattle-analogy" class="md-nav__link">
+    Pets vs Cattle Analogy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-debt" class="md-nav__link">
+    Technical Debt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twelve-factor-apps-in-kubernetes" class="md-nav__link">
+    Twelve-Factor Apps in Kubernetes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-decision-records" class="md-nav__link">
+    Architecture Decision Records
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-service-developer-platform" class="md-nav__link">
+    Self service developer platform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disaster-recovery" class="md-nav__link">
+    Disaster Recovery
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saas" class="md-nav__link">
+    SaaS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-cloud" class="md-nav__link">
+    Multi Cloud
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-automation" class="md-nav__link">
+    Cloud Automation
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automation-glossary" class="md-nav__link">
+    Automation Glossary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices-best-practices" class="md-nav__link">
+    Microservices Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservice-patterns" class="md-nav__link">
+    Microservice Patterns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices-anti-patterns" class="md-nav__link">
+    Microservices Anti Patterns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backends-for-frontends" class="md-nav__link">
+    Backends for Frontends
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-migration-checklist" class="md-nav__link">
+    Cloud Migration Checklist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microservices-failures" class="md-nav__link">
+    Microservices Failures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-microservices-frameworks" class="md-nav__link">
+    Top Microservices Frameworks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-legacy-java-apps-to-microservices-with-automation-tools" class="md-nav__link">
+    Transform Legacy Java Apps to Microservices with automation tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces-for-data-structuring" class="md-nav__link">
+    Namespaces for Data Structuring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-sysadmin-to-architect" class="md-nav__link">
+    From SysAdmin to Architect
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raft-consensus-algorithm" class="md-nav__link">
+    Raft Consensus Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paas" class="md-nav__link">
+    PaaS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#micro-frontend-architecture" class="md-nav__link">
+    Micro Frontend Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-monolith" class="md-nav__link">
+    Modular Monolith
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-java-ee-to-cloud-native" class="md-nav__link">
+    From Java EE To Cloud Native
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monolith-to-microservices-using-the-strangler-pattern" class="md-nav__link">
+    Monolith to Microservices Using the Strangler Pattern
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openshift-vs-kubernetes" class="md-nav__link">
+    Openshift VS Kubernetes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#career-path" class="md-nav__link">
+    Career Path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-stack-developers-roadmap" class="md-nav__link">
+    Full Stack Developer's Roadmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-development-models" class="md-nav__link">
+    Software Development Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-development-tools" class="md-nav__link">
+    Software Development Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vfunction-a-system-to-transform-monolithic-java-applications-into-microservices" class="md-nav__link">
+    vFunction. A system to transform monolithic Java applications into microservices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-in-automotive-industry" class="md-nav__link">
+    Software in Automotive Industry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-centers-in-spain" class="md-nav__link">
+    Data Centers in Spain
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bunch-of-images" class="md-nav__link">
+    Bunch of Images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videos" class="md-nav__link">
+    Videos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tweets" class="md-nav__link">
+    Tweets
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Microservices FAQ & Kubernetes Native
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          SRE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SRE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          SRE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sre/" class="md-nav__link">
+        SRE Site Reliability Engineering
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/" class="md-nav__link">
+        FinOps. Cloud Financial Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chaos-engineering/" class="md-nav__link">
+        Chaos Engineering
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          DevOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DevOps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/" class="md-nav__link">
+        DevOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitops/" class="md-nav__link">
+        GitOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlops/" class="md-nav__link">
+        MLOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheets/" class="md-nav__link">
+        Cheat Sheets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          DevSecOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DevSecOps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          DevSecOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devsecops/" class="md-nav__link">
+        DevSecOps. Container Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../securityascode/" class="md-nav__link">
+        Security Policy as Code
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          NoOps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NoOps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          NoOps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../noops/" class="md-nav__link">
+        NoOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/" class="md-nav__link">
+        Serverless Architectures & Frameworks. OpenFaaS, Knative & Kubeless
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          K8s
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="K8s" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          K8s
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/" class="md-nav__link">
+        Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-tutorials/" class="md-nav__link">
+        Kubernetes Tutorials
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-tools/" class="md-nav__link">
+        Kubernetes Plugins, Tools, Extensions and Projects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubectl-commands/" class="md-nav__link">
+        kubectl Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-networking/" class="md-nav__link">
+        Kubernetes Networking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-monitoring/" class="md-nav__link">
+        Kubernetes Monitoring and Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-security/" class="md-nav__link">
+        Kubernetes Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-storage/" class="md-nav__link">
+        Kubernetes Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-backup-migrations/" class="md-nav__link">
+        Kubernetes Backup and Migrations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-autoscaling/" class="md-nav__link">
+        Kubernetes Autoscaling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-operators-controllers/" class="md-nav__link">
+        Kubernetes Operators and Controllers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-based-devel/" class="md-nav__link">
+        Kubernetes Based Development
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-on-premise/" class="md-nav__link">
+        Kubernetes On Premise
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managed-kubernetes-in-public-cloud/" class="md-nav__link">
+        Managed kubernetes in public clouds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-troubleshooting/" class="md-nav__link">
+        Kubernetes Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-releases/" class="md-nav__link">
+        Kubernetes Releases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix-table/" class="md-nav__link">
+        Kubernetes Distributions & Installers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-bigdata/" class="md-nav__link">
+        Kubernetes Big Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-alternatives/" class="md-nav__link">
+        Kubernetes alternatives
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          OpenShift
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OpenShift" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          OpenShift
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openshift/" class="md-nav__link">
+        OpenShift docs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ocp3/" class="md-nav__link">
+        OCP 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ocp4/" class="md-nav__link">
+        OCP 4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Rancher
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Rancher" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Rancher
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rancher/" class="md-nav__link">
+        Rancher - Enterprise management for Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          CI/CD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CI/CD" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          CI/CD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        CI/CD - Continuous Integration & Continuous Delivery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        Git & Git Patterns. Trunk Devel, Git Flow & Feature Flags. Merge BOTs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins & Cloudbees
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance-testing-with-jenkins-and-jmeter/" class="md-nav__link">
+        Performance testing with Jenkins, JMeter, Gatling, Azure Load Testing, etc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openshift-pipelines/" class="md-nav__link">
+        OpenShift Pipelines with Jenkins, Tekton and more...
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance-testing-with-jenkins-and-jmeter/" class="md-nav__link">
+        Performance testing with Jenkins, JMeter, Gatling, Azure Load Testing, etc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_7" type="checkbox" id="__nav_11_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11_7">
+          DevOps Tools aka Toolchain. Jenkins Alternatives. Cloud Native CI/CD Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DevOps Tools aka Toolchain. Jenkins Alternatives. Cloud Native CI/CD Tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_7">
+          <span class="md-nav__icon md-icon"></span>
+          DevOps Tools aka Toolchain. Jenkins Alternatives. Cloud Native CI/CD Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops-tools/" class="md-nav__link">
+        DevOps Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins-alternatives/" class="md-nav__link">
+        Jenkins Alternatives for Continuous Integration & Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argocd/" class="md-nav__link">
+        Argo CD - Declarative GitOps for Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flux/" class="md-nav__link">
+        Flux CD - The GitOps Operator for Kubernetes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tekton/" class="md-nav__link">
+        Tekton - Cloud Native CI/CD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keptn/" class="md-nav__link">
+        Keptn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-managers/" class="md-nav__link">
+        Container Runtimes/Managers & Base Images. Podman, Buildah & Skopeo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maven-gradle/" class="md-nav__link">
+        Maven, Gradle & SDKMAN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sonarqube/" class="md-nav__link">
+        SonarQube
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registries/" class="md-nav__link">
+        Docker Registries. Quay, Nexus, JFrog Artifactory, Harbor and more
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        Linux & SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        MkDocs & GitHub Pages
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_8" type="checkbox" id="__nav_11_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11_8">
+          Web Servers, Reverse Proxies, Java Runtimes & Caching Solutions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Servers, Reverse Proxies, Java Runtimes & Caching Solutions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_8">
+          <span class="md-nav__icon md-icon"></span>
+          Web Servers, Reverse Proxies, Java Runtimes & Caching Solutions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web-servers/" class="md-nav__link">
+        Web Servers & Reverse Proxies - Apache, Nginx, HAProxy, Traefik and more
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java_app_servers/" class="md-nav__link">
+        Java EE/Jakarta EE and MicroProfile Runtimes - Payara, JBoss EAP, WebSphere Liberty, WildFly and more
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../embedded-servlet-containers/" class="md-nav__link">
+        Embedded Servlet Containers in SpringBoot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caching/" class="md-nav__link">
+        Caching Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          Montrg
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Montrg" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          Montrg
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        Monitoring and Performance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Infra Prov
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Infra Prov" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Infra Prov
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iac/" class="md-nav__link">
+        IaC Infrastructure as Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform/" class="md-nav__link">
+        Terraform & Packer.Kubernetes Boilerplates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pulumi/" class="md-nav__link">
+        Pulumi
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crossplane/" class="md-nav__link">
+        Crossplane
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-arch-diagrams/" class="md-nav__link">
+        Cloud Architecture Diagram Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud-asset-inventory/" class="md-nav__link">
+        Cloud Asset Inventory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Config Mgmt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Config Mgmt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Config Mgmt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/" class="md-nav__link">
+        Helm Kubernetes Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kustomize/" class="md-nav__link">
+        Kustomize - Template-Free Kubernetes Configuration Customization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stackstorm/" class="md-nav__link">
+        StackStorm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chef/" class="md-nav__link">
+        Chef
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd-kubernetes-plugins/" class="md-nav__link">
+        CI/CD Kubernetes Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-client-libraries/" class="md-nav__link">
+        Client Libraries for Kubernetes - Go client, Python, Fabric8, JKube & Java Operator SDK
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        Database Version Control. Liquibase, Flyway and PlanetScale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml/" class="md-nav__link">
+        YAML and JSON
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          DB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DB" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          DB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../databases/" class="md-nav__link">
+        Relational Databases and Database DevOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crunchydata/" class="md-nav__link">
+        Crunchy Data PostgreSQL Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nosql/" class="md-nav__link">
+        NoSQL Databases
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../message-queue/" class="md-nav__link">
+        Data Pipeline
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          Service Mesh
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Service Mesh" data-md-level="1">
+        <label class="md-nav__title" for="__nav_17">
+          <span class="md-nav__icon md-icon"></span>
+          Service Mesh
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../servicemesh/" class="md-nav__link">
+        Service Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../istio/" class="md-nav__link">
+        Istio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          Demos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Demos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_18">
+          <span class="md-nav__icon md-icon"></span>
+          Demos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/" class="md-nav__link">
+        Demos, Boilerplates & Screencasts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Cloud" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../public-cloud-solutions/" class="md-nav__link">
+        Public Cloud Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private-cloud-solutions/" class="md-nav__link">
+        Private Cloud Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge-computing/" class="md-nav__link">
+        Edge Computing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19_4" type="checkbox" id="__nav_19_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_19_4">
+          AWS Cloud
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="AWS Cloud" data-md-level="2">
+        <label class="md-nav__title" for="__nav_19_4">
+          <span class="md-nav__icon md-icon"></span>
+          AWS Cloud
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        AWS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-miscellaneous/" class="md-nav__link">
+        AWS Miscellaneous
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-architecture/" class="md-nav__link">
+        AWS Architecture and Best Practices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-networking/" class="md-nav__link">
+        AWS Networking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-databases/" class="md-nav__link">
+        AWS Databases
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-storage/" class="md-nav__link">
+        AWS Storage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-security/" class="md-nav__link">
+        AWS Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-monitoring/" class="md-nav__link">
+        AWS Monitoring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-iac/" class="md-nav__link">
+        AWS IaC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-tools-scripts/" class="md-nav__link">
+        AWS Tools Scripts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-data/" class="md-nav__link">
+        AWS Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-devops/" class="md-nav__link">
+        AWS DevOps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-serverless/" class="md-nav__link">
+        AWS Serverless
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-pricing/" class="md-nav__link">
+        AWS Pricing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-containers/" class="md-nav__link">
+        AWS Containers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-backup/" class="md-nav__link">
+        AWS Backup and Migrations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-training/" class="md-nav__link">
+        AWS Training and Certification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-newfeatures/" class="md-nav__link">
+        AWS New Features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-spain/" class="md-nav__link">
+        AWS Spain
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/" class="md-nav__link">
+        Microsoft Azure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GoogleCloudPlatform/" class="md-nav__link">
+        Google Cloud Platform
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ibm_cloud/" class="md-nav__link">
+        IBM & IBM Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oraclecloud/" class="md-nav__link">
+        Oracle Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalocean/" class="md-nav__link">
+        Digital Ocean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflare/" class="md-nav__link">
+        Cloudflare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scaleway/" class="md-nav__link">
+        Scaleway
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_20">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        APIs with SOAP, REST and gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swagger-code-generator-for-rest-apis/" class="md-nav__link">
+        Swagger code generator for REST APIs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postman/" class="md-nav__link">
+        API Test Automation with Postman
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developerportals/" class="md-nav__link">
+        API Marketplaces. API Management with API Gateways & Developer Portals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_21">
+          Dev
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dev" data-md-level="1">
+        <label class="md-nav__title" for="__nav_21">
+          <span class="md-nav__icon md-icon"></span>
+          Dev
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devel-sites/" class="md-nav__link">
+        Websites for web developers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../angular/" class="md-nav__link">
+        Angular
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dom/" class="md-nav__link">
+        Document Object Model (DOM)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../golang/" class="md-nav__link">
+        Golang
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        JavaScript - node.js & npm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python - Django & Flask
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lowcode-nocode/" class="md-nav__link">
+        Low Code and No Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web3/" class="md-nav__link">
+        Web 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21_9" type="checkbox" id="__nav_21_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_21_9">
+          Microsoft
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Microsoft" data-md-level="2">
+        <label class="md-nav__title" for="__nav_21_9">
+          <span class="md-nav__icon md-icon"></span>
+          Microsoft
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dotnet/" class="md-nav__link">
+        Microsoft .NET
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xamarin/" class="md-nav__link">
+        Microsoft Xamarin
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21_10" type="checkbox" id="__nav_21_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_21_10">
+          Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Java" data-md-level="2">
+        <label class="md-nav__title" for="__nav_21_10">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java_frameworks/" class="md-nav__link">
+        Java & Open Source Microservices Frameworks. SpringBoot, MicroProfile, Quarkus and more
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java-and-java-performance-optimization/" class="md-nav__link">
+        Java Memory Management & Java Performance Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jvm-parameters-matrix-table/" class="md-nav__link">
+        Java Parameters Matrix Table
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21_11" type="checkbox" id="__nav_21_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_21_11">
+          Dev Environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dev Environment" data-md-level="2">
+        <label class="md-nav__title" for="__nav_21_11">
+          <span class="md-nav__icon md-icon"></span>
+          Dev Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visual-studio/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-dev-env/" class="md-nav__link">
+        WSL - Linux Dev Environment on Windows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scaffolding/" class="md-nav__link">
+        Scaffolding Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChromeDevTools/" class="md-nav__link">
+        Chrome & Firefox DevTools. HTTP Protocols & WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          QA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="QA" data-md-level="1">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          QA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qa/" class="md-nav__link">
+        QA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testops/" class="md-nav__link">
+        TestOps and Continuous Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-automation-frameworks/" class="md-nav__link">
+        Test Automation Frameworks and BDD
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_23">
+          Project Mgmt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Project Mgmt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          Project Mgmt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-management-methodology/" class="md-nav__link">
+        Project Management Methodology
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-management-tools/" class="md-nav__link">
+        Project Management Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appointment-scheduling/" class="md-nav__link">
+        Appointment Scheduling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workfromhome/" class="md-nav__link">
+        Work From Home
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_24" type="checkbox" id="__nav_24" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_24">
+          Refs+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Refs+" data-md-level="1">
+        <label class="md-nav__title" for="__nav_24">
+          <span class="md-nav__icon md-icon"></span>
+          Refs+
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other-awesome-lists/" class="md-nav__link">
+        Other Awesome Lists
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interview-questions/" class="md-nav__link">
+        Interview Questions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../newsfeeds/" class="md-nav__link">
+        Subreddits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elearning/" class="md-nav__link">
+        E-Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-money/" class="md-nav__link">
+        Digital Money
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          Hiring
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Hiring" data-md-level="1">
+        <label class="md-nav__title" for="__nav_25">
+          <span class="md-nav__icon md-icon"></span>
+          Hiring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recruitment/" class="md-nav__link">
+        Recruitment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../freelancing/" class="md-nav__link">
+        Freelancing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-tech-jobs/" class="md-nav__link">
+        Remote Tech Jobs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer/" class="md-nav__link">
+        Clients
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="introduction-microservice-architecture-from-java-ee-to-cloud-native-openshift-vs-kubernetes">Introduction. Microservice Architecture. From Java EE To Cloud Native. Openshift VS Kubernetes</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#pets-vs-cattle-analogy">Pets vs Cattle Analogy</a></li>
+<li><a href="#technical-debt">Technical Debt</a></li>
+<li><a href="#twelve-factor-apps-in-kubernetes">Twelve-Factor Apps in Kubernetes</a></li>
+<li><a href="#architecture-decision-records">Architecture Decision Records</a></li>
+<li><a href="#self-service-developer-platform">Self service developer platform</a></li>
+<li><a href="#disaster-recovery">Disaster Recovery</a></li>
+<li><a href="#saas">SaaS</a></li>
+<li><a href="#multi-cloud">Multi Cloud</a></li>
+<li><a href="#cloud-automation">Cloud Automation</a></li>
+<li><a href="#automation-glossary">Automation Glossary</a></li>
+<li><a href="#microservices-best-practices">Microservices Best Practices</a></li>
+<li><a href="#microservice-patterns">Microservice Patterns</a></li>
+<li><a href="#microservices-anti-patterns">Microservices Anti Patterns</a></li>
+<li><a href="#backends-for-frontends">Backends for Frontends</a></li>
+<li><a href="#cloud-migration-checklist">Cloud Migration Checklist</a></li>
+<li><a href="#microservices-failures">Microservices Failures</a></li>
+<li><a href="#top-microservices-frameworks">Top Microservices Frameworks</a></li>
+<li><a href="#transform-legacy-java-apps-to-microservices-with-automation-tools">Transform Legacy Java Apps to Microservices with automation tools</a></li>
+<li><a href="#namespaces-for-data-structuring">Namespaces for Data Structuring</a></li>
+<li><a href="#from-sysadmin-to-architect">From SysAdmin to Architect</a></li>
+<li><a href="#raft-consensus-algorithm">Raft Consensus Algorithm</a></li>
+<li><a href="#paas">PaaS</a></li>
+<li><a href="#micro-frontend-architecture">Micro Frontend Architecture</a></li>
+<li><a href="#modular-monolith">Modular Monolith</a></li>
+<li><a href="#from-java-ee-to-cloud-native">From Java EE To Cloud Native</a></li>
+<li><a href="#monolith-to-microservices-using-the-strangler-pattern">Monolith to Microservices Using the Strangler Pattern</a></li>
+<li><a href="#openshift-vs-kubernetes">Openshift VS Kubernetes</a></li>
+<li><a href="#career-path">Career Path</a></li>
+<li><a href="#full-stack-developers-roadmap">Full Stack Developer&rsquo;s Roadmap</a></li>
+<li><a href="#software-development-models">Software Development Models</a></li>
+<li><a href="#software-development-tools">Software Development Tools</a></li>
+<li><a href="#vfunction-a-system-to-transform-monolithic-java-applications-into-microservices">vFunction. A system to transform monolithic Java applications into microservices</a></li>
+<li><a href="#software-in-automotive-industry">Software in Automotive Industry</a></li>
+<li><a href="#data-centers-in-spain">Data Centers in Spain</a></li>
+<li><a href="#bunch-of-images">Bunch of Images</a></li>
+<li><a href="#videos">Videos</a></li>
+<li><a href="#tweets">Tweets</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li><a href="https://developers.redhat.com/blog/2018/06/28/why-kubernetes-is-the-new-application-server/">developers.redhat.com: Why Kubernetes is The New Application Server</a></li>
+<li><a href="https://dzone.com/articles/kubernetes-in-10-minutes-a-complete-guide-to-look">Dzone.com: Kubernetes in 10 minutes: A Complete Guide</a></li>
+<li><a href="https://www.redhat.com/en/topics/microservices/why-choose-red-hat-microservices">redhat.com: Why choose Red Hat for microservices?</a></li>
+<li><a href="https://changelog.com/posts/monoliths-are-the-future">Monoliths are the future</a></li>
+<li><a href="https://www.weave.works/technologies/going-cloud-native-6-essential-things-you-need-to-know/">weave.works: Going Cloud Native: 6 essential things you need to know</a></li>
+<li><a href="https://thenewstack.io/operators-and-sidecars-are-the-new-model-for-software-delivery/">Operators and Sidecars Are the New Model for Software Delivery</a></li>
+<li><a href="https://dzone.com/articles/what-is-kubernetes-in-devops">Dzone: What Is Kubernetes?</a> </li>
+<li><a href="https://jaxenter.com/kubernetes-practical-implications-171647.html">jaxenter.com: Practical Implications for Adopting a Multi-Cluster, Multi-Cloud Kubernetes Strategy</a></li>
+<li><a href="https://jaxenter.com/kubernetes-extensions-172215.html">jaxenter.com: Six Essential Kubernetes Extensions to Add to Your Toolkit 🌟</a></li>
+<li><a href="https://www.thoughtworks.com/radar/platforms/kubernetes">thoughtworks.com: Kubernetes</a></li>
+<li><a href="https://addwebsolution.com/blog/how-kubernetes-helps-businesses-manage-their-it-infrastructure">addwebsolution.com: How Kubernetes helps businesses manage their IT infrastructure?</a></li>
+<li><a href="https://dzone.com/articles/how-to-kill-your-developer-productivity-humanitec">Dzone: How to Kill Your Developer Productivity</a></li>
+<li><a href="https://loves.cloud/kubernetes-an-introduction/">loves.cloud: Kubernetes: An Introduction</a></li>
+<li><a href="https://thenewstack.io/microservices-vs-monoliths-an-operational-comparison/">thenewstack.io: Microservices vs. Monoliths: An Operational Comparison</a></li>
+<li><a href="https://www.weave.works/blog/6-business-benefits-of-kubernetes">weave.works: 6 Business Benefits of Kubernetes</a></li>
+<li><a href="https://www.ituser.es/opinion/2020/07/las-principales-habilidades-que-un-arquitecto-cloud-necesita-para-triunfar">ituser.es: Las principales habilidades que un arquitecto cloud necesita para triunfar</a></li>
+<li><a href="https://eng.uber.com/microservice-architecture/">Introducing Domain-Oriented Microservice Architecture 🌟</a></li>
+<li><a href="https://www.enterprisetimes.co.uk/2020/07/23/monolithic-versus-microservice-architecture">Monolithic versus Microservice architecture</a></li>
+<li><a href="https://searchcloudcomputing.techtarget.com/feature/Modernize-legacy-applications-with-containers-microservices">Modernize legacy applications with containers, microservices</a> To break down monolithic apps and modernize them for cloud deployment, enterprise development teams continue to turn to containers and microservices.</li>
+<li><a href="https://blog.heroku.com/monolithic-applications-into-services">blog.heroku.com: Deconstructing Monolithic Applications into Services</a></li>
+<li><a href="https://blogs.vmware.com/vov/2018/08/06/how-to-deconstruct-a-monolith-using-microservices-getting-ready-for-cloud-native/">vmware.com: How to Deconstruct a Monolith using Microservices – Getting Ready for Cloud-Native</a></li>
+<li><a href="https://thenewstack.io/7-best-practices-to-build-and-maintain-resilient-applications-and-infrastructure/">thenewstack.io: 7 Best Practices to Build and Maintain Resilient Applications and Infrastructure</a></li>
+<li><a href="https://www.viewnext.com/front-end-vs-back-end/">viewnext.com: Front End vs Back End (spanish)</a></li>
+<li><a href="https://thenewstack.io/what-is-the-modern-cloud-native-stack/">thenewstack.io: What is the modern cloud native stack? 🌟🌟</a></li>
+<li><a href="https://thenewstack.io/do-i-really-need-kubernetes/">thenewstack.io: Do I Really Need Kubernetes? 🌟</a></li>
+<li><a href="https://www.cncf.io/blog/2020/09/15/top-7-challenges-to-becoming-cloud-native/">cncf.io: Top 7 challenges to becoming cloud native</a></li>
+<li><a href="https://www.dewanahmed.com/post/tekton-k8snative-cicd-pt1/">dewanahmed.com: When to go K8s-native - A tale of CI/CD servers</a></li>
+<li><a href="https://www.lavanguardia.com/economia/20201014/484036217179/transformacion-digital-empresas-foncillas-pf-video-seo-lv.html">lavanguardia.com: Por qué la transformación digital es mentira 🌟</a></li>
+<li><a href="https://devops.com/6-advantages-of-microservices/">devops.com: 6 Advantages of Microservices</a></li>
+<li><a href="https://cloudpundit.com/2020/09/22/dont-boil-the-ocean-to-create-your-cloud/">cloudpundit.com: Don’t boil the ocean to create your cloud 🌟</a></li>
+<li><a href="https://www.hcltech.com/blogs/devops-tools-and-technologies-manage-microservices">hcltech.com: DevOps Tools and Technologies to Manage Microservices 🌟</a> </li>
+<li><a href="https://www.redhat.com/sysadmin/containerizing-applications">redhat.com: A sysadmin&rsquo;s guide to containerizing applications</a> Curious how to containerize your Linux applications? Learn by example, and understand the challenges of various application types and how to overcome them.</li>
+<li><a href="https://opensource.com/article/20/12/containers-101">opensource.com: 6 container concepts you need to understand</a> Containers are everywhere, and they&rsquo;ve radically changed the IT landscape. What do you need to know about them?</li>
+<li><a href="https://devops.com/why-boring-tech-is-best-to-avoid-a-microservices-mess/">devops.com: Why Boring Tech is Best to Avoid a Microservices Mess</a></li>
+<li><a href="https://blog.upbound.io/managed-services-dont-always-lead-to-vendor-lock-in/">blog.upbound.io: Managed Services Don’t Always Lead to Vendor Lock-In 🌟</a></li>
+<li><a href="https://softwareengineeringdaily.com/2020/12/29/kubernetes-vs-serverless-with-matt-ward-repeat/">softwareengineeringdaily.com: Kubernetes vs. Serverless with Matt Ward (podcast) 🌟</a></li>
+<li><a href="https://softwareengineeringdaily.com/2020/02/13/setting-the-stage-for-platform-engineering/">softwareengineeringdaily.com: The Rise of Platform Engineering 🌟</a></li>
+<li><a href="https://thenewstack.io/3-reasons-why-you-cant-afford-to-ignore-cloud-native-computing/">thenewstack.io: 3 Reasons Why You Can’t Afford to Ignore Cloud Native Computing 🌟</a></li>
+<li><a href="https://thenewstack.io/defining-a-different-kubernetes-user-interface-for-the-next-decade/">thenewstack.io: Defining a Different Kubernetes User Interface for the Next Decade</a></li>
+<li><a href="https://thenewstack.io/react-in-real-time-with-event-driven-apis/">thenewstack.io: React in Real-Time with Event-Driven APIs</a></li>
+<li><a href="https://codeopinion.com/splitting-up-a-monolith-into-microservices/">codeopinion.com: Splitting up a Monolith into Microservices 🌟</a></li>
+<li><a href="https://towardsdatascience.com/learning-from-microservices-as-a-data-engineer-1334ce13876c">towardsdatascience.com: Learning From Microservices — as a Data Engineer 🌟</a> Why Software Engineers moved to microservices and how we could learn from their experience </li>
+<li><a href="https://javarevisited.blogspot.com/2020/11/why-devops-engineer-learn-docker-kubernetes.html">javarevisited.blogspot.com: Why Every Programmer, DevOps Engineer Should learn Docker and Kubernetes in 2020</a></li>
+<li><a href="https://www.techrepublic.com/article/kubernetes-will-deliver-the-app-store-experience-for-enterprise-software-says-weaveworks-ceo/">techrepublic.com: Kubernetes will deliver the app store experience for enterprise software, says Weaveworks CEO</a></li>
+<li><a href="https://shahirdaya.medium.com/what-does-it-mean-to-be-cloud-native-12360a324571">shahirdaya.medium.com: What does it mean to be Cloud Native? 🌟</a></li>
+<li><a href="https://enterprisersproject.com/article/2021/1/5-hybrid-cloud-trends-2021">enterprisersproject.com: 5 hybrid cloud trends to watch in 2021</a> As hybrid cloud becomes the go-to model for enterprise IT, watch for these trends. Experts discuss cloud platform changes, workload fit, security, and related issues</li>
+<li><a href="https://sysadminxpert.com/scalability-and-costs-in-the-cloud/">sysadminxpert.com: Scalability and Costs in the Cloud</a></li>
+<li><a href="https://cloudify.co/everything-you-need-to-know-about-hybrid-cloud/">cloudify.co: Your Guide to Infrastructure Automation &amp; Hybrid Cloud Orchestration 🌟</a></li>
+<li><a href="https://jaxenter.com/kubernetes-bigger-173675.html">jaxenter.com: Kubernetes Is Much Bigger Than Containers: Here’s Where It Will Go Next</a></li>
+<li><a href="https://skamille.medium.com/make-boring-plans-9438ce5cb053">skamille.medium.com: Make Boring Plans</a></li>
+<li><a href="https://cloud-melon.com/2019/12/26/under-the-hood-of-kubernetes-and-microservices/">cloud-melon.com: Under the hood of Kubernetes and microservices</a></li>
+<li><a href="https://thenewstack.io/study-silos-are-chief-impediment-to-it-and-business-value/">thenewstack.io: Study: Silos Are the Chief Impediment to IT and Business Value</a></li>
+<li><a href="https://dzone.com/articles/10-mandatory-services-you-should-consider-adopting">dzone: 10 Mandatory Services You Should Consider Adopting in AWS and Azure 🌟</a> Thanks to the cloud revolution, the software engineering industry went from struggling to maintain IT infrastructure to selling software for subscription within a decade.</li>
+<li><a href="https://thenewstack.io/prepare-to-adopt-the-cloud-a-10-step-cloud-migration-checklist/">thenewstack.io: Prepare to Adopt the Cloud: A 10-Step Cloud Migration Checklist 🌟</a></li>
+<li><a href="https://www.devprojournal.com/technology-trends/kubernetes/containers-kubernetes-and-software-development-in-2021/">devprojournal.com: Containers, Kubernetes and Software Development in 2021</a> Advice, expertise, and tools are available to help you get started developing with containers.</li>
+<li><a href="https://www.infoq.com/articles/migrating-monoliths-to-microservices-with-decomposition/">infoq.com: Migrating Monoliths to Microservices with Decomposition and Incremental Changes</a></li>
+<li><a href="https://www.getcortexapp.com/post/why-you-need-a-microservices-catalog-tool">getcortexapp.com: Why You Need a Microservices Catalog Tool</a></li>
+<li><a href="https://www.ringcentral.co.uk/gb/en/blog/definitions/software-as-a-service-saas/">ringcentral.co.uk: Software as a Service (SaaS)</a></li>
+<li><a href="https://levelup.gitconnected.com/multi-tenant-architecture-8c1f597e069c">levelup.gitconnected.com: Multi-Tenant Architecture</a></li>
+<li><a href="https://shopify.engineering/faster-shopify-ci">shopify.engineering: Keeping Developers Happy with a Fast CI</a></li>
+<li><a href="https://www.infoq.com/articles/saga-orchestration-outbox/">infoq.com: Saga Orchestration for Microservices Using the Outbox Pattern</a></li>
+<li><a href="https://medium.com/swlh/a-design-analysis-of-cloud-based-microservices-architecture-at-netflix-98836b2da45f">medium: A Design Analysis of Cloud-based Microservices Architecture at Netflix</a> A comprehensive system design analysis of microservices architecture at Netflix to power its global video streaming services</li>
+<li><a href="https://www.analyticsinsight.net/cloud-computing-is-the-inevitable-future-of-data-analytics/">analyticsinsight.net: Cloud Computing is the inevitable future of Data Analytics</a></li>
+<li><a href="https://www.zdnet.com/google-amp/article/multicloud-deployments-surge-as-microsoft-azure-duels-with-aws/">zdnet.com: Multicloud deployments surge as Microsoft Azure duels with AWS</a> All of the public cloud players are showing solid growth as the multicloud pie expands. Azure is closing the gap on AWS, but Google Cloud is making big inroads too.</li>
+<li><a href="https://blog.container-solutions.com/how-mature-is-your-microservices-architecture">blog.container-solutions.com: How Mature Is Your Microservices Architecture? 🌟</a></li>
+<li><a href="https://www.techerati.com/features-hub/opinions/microservices-in-the-cloud-native-era/">techerati.com: Microservices in the Cloud-Native Era</a></li>
+<li><a href="https://thenewstack.io/the-cloud-native-landscape-platforms-explained/">thenewstack.io: The Cloud Native Landscape: Platforms Explained</a></li>
+<li><a href="https://thenewstack.io/google-and-oracle-cloud-adoption-doubles-among-enterprises-3/">thenewstack.io: Are Private Clouds Proliferating?</a></li>
+<li><a href="https://thenewstack.io/multicloud-challenges-and-solutions">thenewstack.io: Multicloud Challenges and Solutions</a></li>
+<li><a href="https://www.makeuseof.com/kubernetes-or-docker/">makeuseof.com: hich Container System Should You Use: Kubernetes or Docker?</a> Choosing a container system for is a straightforward choice between two systems. Should you choose Kubernetes or Docker?</li>
+<li><a href="https://www.infoworld.com/article/3614210/the-decline-of-heroku.html">infoworld.com: The decline of Heroku PaaS</a></li>
+<li><a href="https://www.infoq.com/articles/microservices-design-ideals/">infoq.com: Principles for Microservice Design: Think IDEALS, Rather than SOLID</a></li>
+<li><a href="https://thenewstack.io/the-scalability-myth/">thenewstack.io: The Scalability Myth</a></li>
+<li><a href="https://thenewstack.io/the-4-definitions-of-multicloud-part-1-data-portability/">thenewstack.io: The 4 Definitions of Multicloud: Part 1 — Data Portability</a></li>
+<li><a href="https://thenewstack.io/multicloud-paves-the-way-for-cloud-native-resiliency-models/">thenewstack.io: Multicloud Paves the Way for Cloud Native Resiliency Models</a></li>
+<li><a href="https://www.techerati.com/features-hub/opinions/microservices-in-the-cloud-native-era/">techerati.com: Microservices in the Cloud-Native Era</a></li>
+<li><a href="https://www.infoworld.com/article/3616211/3-cloud-architecture-mistakes-we-all-make-but-shouldnt.html">infoworld.com: 3 cloud architecture mistakes we all make, but shouldn&rsquo;t</a></li>
+<li><a href="https://www.ringcentral.co.uk/gb/en/blog/definitions/cloud-management/">ringcentral.co.uk: Cloud Management 🌟</a></li>
+<li><a href="https://rudderstack.com/blog/reinventing-the-on-prem-deployment-model">rudderstack.com: Reinventing the On-Prem Deployment Model</a></li>
+<li><a href="https://medium.com/codex/honestly-we-shouldnt-have-used-microservices-443582def48b">medium: Honestly, We Shouldn’t Have Used Microservices</a></li>
+<li><a href="https://www.hashicorp.com/resources/why-microservices">hashicorp.com: Why Microservices? 🌟</a></li>
+<li><a href="https://stackoverflow.blog/2021/05/19/rethinking-system-architecture-can-kubernetes-help-to-solve-rewrite-anxiety/">stackoverflow.blog: Using Kubernetes to rethink your system architecture and ease technical debt 🌟</a></li>
+<li><a href="https://thenewstack.io/private-vs-public-cloud-how-kubernetes-shifts-the-balance/">thenewstack.io: Private vs. Public Cloud: How Kubernetes Shifts the Balance</a></li>
+<li><a href="https://medium.com/swlh/microservices-architecture-from-a-to-z-7287da1c5d28">medium: Microservices Architecture From A to Z 🌟</a></li>
+<li><a href="https://skycrafters.io/blog/2021/06/08/do-containers-really-contain/">skycrafters.io: Do Containers Really Contain? Virtual Machines vs. Containers 🌟</a> </li>
+<li><a href="https://www.itprotoday.com/containers/whos-winning-container-software-market">itprotoday.com: Who&rsquo;s Winning in the Container Software Market 🌟</a> Thanks to its container customer training, the $1 billion container software market is Red Hat’s to lose. Where do the other players stand?</li>
+<li><a href="https://cloud.google.com/learn/what-is-kubernetes">cloud.google.com: What is Kubernetes? 🌟</a></li>
+<li><a href="https://www.simform.com/multi-cloud-strategy/">simform.com: What is Multi Cloud? Why you Need a Multi Cloud Strategy?</a></li>
+<li><a href="https://blog.min.io/monoclouds-vs-multiclouds-hybridclouds/">blog.min.io: Mono Clouds vs Multi-Clouds &amp; Hybrid Clouds</a></li>
+<li><a href="https://www.xataka.com/pro/deuda-tecnica-lastre-para-tecnologicas-estudio-senala-que-informaticos-pierden-casi-dia-trabajo-a-semana-para-solventarlas">xataka.com: La deuda técnica, un lastre para las tecnológicas: un estudio señala que los informáticos pierden casi un día de trabajo a la semana para solventarlas</a></li>
+<li><a href="https://dev.to/typeable/when-it-pays-to-choose-microservices-12h5">dev.to: When it Pays to Choose Microservices 🌟</a></li>
+<li><a href="https://acloudguru.com/blog/business/public-cloud-vs-private-cloud-whats-the-difference">acloudguru.com: Public cloud vs private cloud: What’s the difference? 🌟</a></li>
+<li><a href="https://medium.com/techbeatly/container-fundamentals-part-i-445881a81b7">medium: Container Fundamentals — Part 1</a></li>
+<li><a href="https://thenewstack.io/the-future-of-microservices-more-abstractions/">thenewstack.io: The Future of Microservices? More Abstractions</a></li>
+<li><a href="https://thenewstack.io/transform-and-future-proof-your-architecture-with-mach/">thenewstack.io: Transform and Future-Proof Your Architecture with MACH</a> Why Do So Many Companies Remain in These ‘Bad Marriages’ with Monolithic Vendors? Enter MACH (Microservices, API-first, Cloud native, Headless)</li>
+<li><a href="https://yellow.systems/blog/how-to-build-a-scalable-web-application"><mark>yellow.systems: How to Make a Scalable Web Application: Architecture, Technologies, Cost</mark> 🌟</a></li>
+<li><a href="https://opensource.com/article/21/7/system-administrators">opensource.com: What do we call post-modern system administrators?</a> Our community discusses the responsibilities, possible titles, and potential skills of today&rsquo;s sysadmins.</li>
+<li><a href="https://thenewstack.io/cloud-engineers-try-policy-as-code-to-cure-misconfiguration-woes/">thenewstack.io: Cloud Engineers Try Policy-as-Code to Cure Misconfiguration Woes</a></li>
+<li><a href="https://dzone.com/articles/the-origins-of-technical-debt">dzone: The Origins of Technical Debt</a> According to research in the topic, 59% of business leaders in Norway said technical debt was their primary obstacle preventing them from innovating.</li>
+<li><a href="https://go.acloudguru.com/cloud-adoption-mistakes-ebook">acloudguru.com: 7 Common Cloud Adoption Mistakes (ebook)</a></li>
+<li><a href="https://medium.com/microservices-for-net-developers/what-is-microservices-and-why-is-it-different-fac017cb8cf4">medium: What is microservices and why is it different? 🌟</a></li>
+<li><a href="https://dzone.com/articles/how-your-application-architecture-evolved">dzone: How Your Application Architecture Has Evolved 🌟🌟</a> In this post, I will discuss how application architecture, in my opinion, has evolved in the last few years and what has been the driving factor for each evolution.</li>
+<li><a href="https://www.simform.com/blog/multi-cloud-architecture/">simform.com: 6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy 🌟</a></li>
+<li><a href="https://dzone.com/articles/a-study-of-hosting-and-managing-on-hybrid-multi-cl">dzone: A Study of Hosting and Managing on Hybrid Multi-Cloud 🌟</a> This is my study of a real customer use case on GitOps, multi-cloud management system and, securing dynamic infrastructure secrets, using Red Hat’s open source technology</li>
+<li><a href="https://www.simform.com/cloud-migration-ebook/">simform.com: Cloud Migration ebook</a></li>
+<li><a href="https://www.blog.snapblocs.com/post/architecture-as-a-service-theevolution-of-cloud-computing-asaservice">blog.snapblocs.com: Architecture as a Service: The Evolution of Cloud Computing “as a Service”</a></li>
+<li><a href="https://www.n-ix.com/reduce-technical-debt/">n-ix.com: How to reduce your technical debt: An ultimate guide</a></li>
+<li><a href="https://www.fylamynt.com/post/mastering-cloud-automation-in-the-cloud-native-era">fylamynt.com: Mastering Cloud Automation in the Cloud-Native Era 🌟</a> As cloud computing is increasingly getting adopted all over, automation is taking a prime stage these days in the cloud-native space to streamline and manage various IT-related tasks. In this article, we will discuss cloud automation and various aspects related in brief.</li>
+<li><a href="https://www.dynatrace.com/news/blog/what-are-microservices/">dynatrace.com: What are microservices? All you need to know</a></li>
+<li><a href="https://medium.com/getdefault-in/monoliths-vs-microservices-59cff20bb106">medium: Monoliths vs Microservices</a></li>
+<li><a href="https://dzone.com/articles/guaranteed-ways-of-failing-with-microservices">dzone: Guaranteed Ways of Failing With Microservices</a> Microservices cannot be used in every context. It is perfectly fine to not use microservices in applications that are small and can be managed easily as monolithic.</li>
+<li><a href="https://dzone.com/articles/top-time-wastes-as-a-software-engineer">dzone: Top 6 Time Wastes as a Software Engineer</a> Increase your productivity and advance in your career by avoiding these 6 time wastes.</li>
+<li><a href="https://thenewstack.io/reasons-to-opt-for-a-multicloud-strategy/">thenewstack.io: Reasons to Opt for a Multicloud Strategy</a></li>
+<li><a href="https://developers.redhat.com/devnation/summer-camp">developers.redhat.com: devnation/summer-camp 🌟</a> A great resource to learn cloud-native, kubernetes, event-driven architecture and more.</li>
+<li><a href="https://community.hpe.com/t5/HPE-Ezmeral-Uncut/Containers-vs-VMs-What-s-the-difference/ba-p/7147090">community.hpe.com: Containers vs. VMs: What’s the difference?</a></li>
+<li><a href="https://hiralee.medium.com/software-design-vs-architecture-1da0a94322a4">hiralee.medium.com: Software Architecture vs Design</a></li>
+<li><a href="https://blog.deref.io/containers-dont-solve-everything/">blog.deref.io: Containers Don&rsquo;t Solve Everything 🌟</a> Our industry has made incredible strides in the past decade, thanks in part to technologies like Docker, Docker Compose, and Kubernetes. However, we are still figuring out how to do development in the heterogeneous environments in which we live.</li>
+<li><a href="https://thenewstack.io/stop-technical-debt-before-it-damages-your-company/">thenewstack.io: Stop Technical Debt Before It Damages Your Company</a></li>
+<li><a href="https://www.geeksforgeeks.org/microservice-architecture-introduction-challeneges-best-practices/">geeksforgeeks.org: Microservice Architecture – Introduction, Challeneges &amp; Best Practices</a></li>
+<li><a href="https://www.redhat.com/sysadmin/automation-combat-increased-workload">redhat.com: Use automation to combat your increased workload</a>Tired of mundane, tedious, boring tasks? Automation improves your efficiency and frees your time to focus on new and innovative opportunities.</li>
+<li><a href="https://www.zdnet.com/google-amp/article/cloud-computing-pros-and-cons/">zdnet.com: Benefits of cloud computing: The pros and cons</a> A list of advantages and disadvantages of cloud computing, including some you may not know existed.</li>
+<li><a href="https://thenewstack.io/intention-as-code-making-self-healing-infrastructure-work/">thenewstack.io: Intention-as Code: Making Self-Healing Infrastructure Work</a> <strong>Reliability is Non-Negotiable</strong></li>
+<li><a href="https://dzone.com/articles/most-viewed-articles-microservices-zone-august">dzone: Top 10 August &lsquo;21 Microservices Articles to Read Now</a> See the 10 most popular articles from the Microservices zone with topics covering API verification checklist, custom rate limiting, feign client, and more!</li>
+<li><a href="https://hackernoon.com/9-basic-and-crucial-tips-for-microservices-developers">hackernoon.com: 9 Basic (and Crucial) Tips for Microservices Developers 🌟</a></li>
+<li><a href="https://engineering.monday.com/monday-coms-multi-regional-architecture-a-deep-dive/">engineering.monday.com: monday.com’s Multi-Regional Architecture: A Deep Dive</a> Building a global SaaS platform requires lots of preparation, deep evaluation of your request routes and a truckload of R&amp;D cooperation. Here&rsquo;s how we did it</li>
+<li><a href="https://cloud.redhat.com/blog/how-to-modernize-virtualized-workloads">cloud.redhat.com: How to Modernize Virtualized Workloads 🌟</a> how to #Modernize workloads using OpenShift. The example is with DotNet and MSSQL server.</li>
+<li><a href="https://itnext.io/platform-as-code-how-it-compares-with-infrastructure-as-code-and-what-it-enables-2684b348be2e">itnext.io: Platform-as-Code: how it relates to Infrastructure-as-Code and what it enables</a></li>
+<li><a href="https://dzone.com/articles/transitioning-from-monolith-to-microservices">dzone: Transitioning from Monolith to Microservices (with python django example)</a></li>
+<li><a href="https://www.cncf.io/blog/2021/10/29/how-to-justify-infrastructure-replacement-to-your-manager">cncf.io: How to justify infrastructure replacement to your manager</a></li>
+<li><a href="https://www.infoworld.com/article/3639050/complexity-is-killing-software-developers.html">infoworld.com: Complexity is killing software developers</a> The growing complexity of modern software systems is slowly killing software developers. How can you regain control, without losing out on the best these technologies have to offer?</li>
+<li><a href="https://www.enter.co/especiales/dev/herramientas-dev/estos-son-los-10-lenguajes-de-programacion-mas-populares-en-2021/">enter.co: Estos son los 10 lenguajes de programación más populares en 2021</a></li>
+<li><a href="https://zesty.co/blog/10-cloud-deficiencies/">zesty.co: 10 Cloud Deficiencies You Should Know</a></li>
+<li><a href="https://www.weave.works/blog/kubernetes-cluster">weave.works: What is a Kubernetes Cluster? 🌟</a></li>
+<li><a href="https://www.techrepublic.com/article/enterprises-get-closer-to-the-app-store-experience-with-kubernetes-and-gitops/"><mark>techrepublic.com: Enterprises get closer to the app store experience with Kubernetes and GitOps</mark></a></li>
+<li><a href="https://dzone.com/articles/22-software-development-trends-for-2022-1"><mark>Dzone: 22 Software Development Trends for 2022</mark></a> AI, ML, IaC, SRE, DevSecOps, and many others will define how we make software in 2022. Discover what they mean and why they matter in this article.</li>
+<li><a href="https://www.redhat.com/en/resources/oreilly-97things-cloud-engineers-should-know-ebook"><mark>redhat.com: 97 Things Every Cloud Engineer Should Know</mark></a> If you create, manage, operate, or configure systems running in the cloud, you&rsquo;re a cloud engineer—even if you work as a system administrator, software developer, data scientist, or site reliability engineer. All of these topics are covered in this e-book: fundamentals, architecture, migration, security &amp; compliance, operations &amp; reliability, software development, cloud economics and measuring spend, automation, data, networking, organizational culture, and personal and professional development.</li>
+<li><a href="https://www.theregister.com/2021/12/21/how_kubernetes_lowers_costs/"><mark>theregister.com: How Kubernetes lowers costs and automates IT department work</mark></a> 75% of global companies will have started using container applications in their production environments by 2022.</li>
+<li><a href="https://www.redhat.com/architect/best-microservices-2021"><mark>redhat.com: Top 8 resources for microservices architecture of 2021</mark></a> Reining in complexity, doing things consistently, leveraging standards, and modernizing systems are timeless themes in microservices architecture.</li>
+<li><a href="https://www.infoworld.com/article/3645374/kubernetes-up-serverless-down-report.html">infoworld.com: Kubernetes adoption up, serverless down, developer survey says</a> ‘State of Cloud Native Development’ report finds the number of developers using Kubernetes increased 67% in 12 months.</li>
+<li><a href="https://venturebeat.com/2021/12/22/5-ways-the-world-of-it-operations-will-shift-in-2022-and-beyond/">venturebeat.com: 5 ways the world of IT operations will shift in 2022 (and beyond)</a></li>
+<li><a href="https://thenewstack.io/5-cloud-native-trends-to-watch-out-for-in-2022/">thenewstack.io: 5 Cloud Native Trends to Watch out for in 2022</a></li>
+<li><a href="https://blog.devgenius.io/distributed-monolith-1d2d9f86a68f"><mark>blog.devgenius.io: Distributed Monolith</mark></a></li>
+<li><a href="https://www.infoq.com/presentations/fail-cloud-native-migration/">infoq.com: 9 Ways to Fail at Cloud Native</a></li>
+<li><a href="https://www.arnnet.com.au/article/694082/kubernetes-adoption-up-serverless-down-according-developer-survey/">arnnet.com.au: Kubernetes adoption up and serverless down, according to developer survey</a> State of Cloud Native Development report finds the number of developers using Kubernetes increased 67 per cent in 12 months.</li>
+<li><a href="https://levelup.gitconnected.com/how-to-design-a-system-to-scale-to-your-first-100-million-users-4450a2f9703d"><mark>levelup.gitconnected.com: How to design a system to scale to your first 100 million users</mark></a></li>
+<li><a href="https://devops.com/measuring-technical-debt/">devops.com: Measuring Technical Debt</a></li>
+<li><a href="https://thenewstack.io/app-modernization-5-tips-when-migrating-to-kubernetes/">thenewstack.io: App Modernization: 5 Tips When Migrating to Kubernetes</a></li>
+<li><a href="https://thenewstack.io/kubernetes-and-the-next-generation-of-paas/">thenewstack.io: Kubernetes and the Next Generation of PaaS</a></li>
+<li><a href="https://medium.com/geekculture/a-beginners-guide-to-understanding-microservices-d2a8bae871b7">medium.com/geekculture: A Beginners Guide to Understanding Microservices</a> A high-level overview of the microservices architecture and what it means in plain language understandable by beginners.</li>
+<li><a href="https://nathanpeck.com/why-should-use-container-orchestration/">nathanpeck.com: Why should I use an orchestrator like Kubernetes, Amazon ECS, or Hashicorp Nomad?</a></li>
+<li><a href="https://christophermeiklejohn.com/filibuster/2022/03/19/understanding-faults.html">christophermeiklejohn.com: Understanding why Resilience Faults in Microservice Applications Occur</a></li>
+<li><a href="https://www.websiteplanet.com/blog/what-is-open-source-software/">websiteplanet.com: What’s Open Source Software + How It Makes Money 2022</a></li>
+</ul>
+<h2 id="pets-vs-cattle-analogy">Pets vs Cattle Analogy</h2>
+<ul>
+<li><a href="http://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/"><mark>cloudscaling.com: The History of Pets vs Cattle and How to Use the Analogy Properly</mark></a><ul>
+<li><strong>In the old way of doing things, we treat our servers like pets, for example Bob the mail server. If Bob goes down, it’s all hands on deck. The CEO can’t get his email and it’s the end of the world. In the new way, servers are numbered, like cattle in a herd. For example, www001 to www100. When one server goes down, it’s taken out back, shot, and replaced on the line.</strong></li>
+<li><mark>Pets</mark>: <strong>Servers or server pairs that are treated as indispensable or unique systems that can never be down. Typically they are manually built, managed, and “hand fed”. Examples include mainframes, solitary servers, HA loadbalancers/firewalls (active/active or active/passive), database systems designed as master/slave (active/passive), and so on.</strong></li>
+<li><mark>Cattle</mark>: <strong>Arrays of more than two servers, that are built using automated tools, and are designed for failure, where no one, two, or even three servers are irreplaceable. Typically, during failure events no human intervention is required as the array exhibits attributes of “routing around failures” by restarting failed servers or replicating data through strategies like triple replication or erasure coding. Examples include web server arrays, multi-master datastores such as Cassandra clusters, multiple racks of gear put together in clusters, and just about anything that is load-balanced and multi-master.</strong></li>
+</ul>
+</li>
+<li><a href="https://traefik.io/blog/pets-vs-cattle-the-future-of-kubernetes-in-2022"><mark>traefik.io: Pets vs. Cattle: The Future of Kubernetes in 2022</mark></a></li>
+</ul>
+<h2 id="technical-debt">Technical Debt</h2>
+<ul>
+<li><a href="https://medium.com/@joaomilho/festina-lente-e29070811b84"><mark>medium: Technical debt 101</mark></a> A primer about technical debt, legacy code, big rewrites and ancient wisdom for non technical managers</li>
+<li><a href="https://www.infoq.com/articles/managing-technical-debt-microservices/">infoq.com: Managing Technical Debt in a Microservice Architecture</a></li>
+</ul>
+<h2 id="twelve-factor-apps-in-kubernetes">Twelve-Factor Apps in Kubernetes</h2>
+<ul>
+<li><a href="https://acloudguru.com/blog/engineering/twelve-factor-apps-in-kubernetes">acloudguru.com: Twelve-Factor Apps in Kubernetes</a></li>
+<li><a href="https://opensource.com/article/21/11/open-source-12-factor-app-methodology"><mark>opensource.com: An open source developer&rsquo;s guide to 12-Factor App methodology</mark></a> How 12 basic principles can help teams build highly scalable apps quickly and efficiently.</li>
+</ul>
+<h2 id="architecture-decision-records">Architecture Decision Records</h2>
+<ul>
+<li><a href="https://www.redhat.com/architect/architecture-decision-records">redhat.com: Why you should be using architecture decision records to document your project</a> <mark>Documenting architectural decisions helps a project succeed by helping current and future contributors understand the reasons for doing things a certain way.</mark></li>
+</ul>
+<h2 id="self-service-developer-platform">Self service developer platform</h2>
+<ul>
+<li><a href="https://www.weave.works/blog/what-is-a-self-service-developer-platform">weave.works: What is a self-service developer platform and why does it matter?</a></li>
+</ul>
+<h2 id="disaster-recovery">Disaster Recovery</h2>
+<ul>
+<li><a href="https://thenewstack.io/disaster-recovery-is-different-for-the-cloud/">thenewstack.io: Disaster Recovery Is Different for the Cloud</a></li>
+<li><a href="https://www.bunnyshell.com/blog/disaster-recovery-devops">bunnyshell.com: DR in DevOps: How to Guarantee an Effective Disaster Recovery Plan with DevOps</a></li>
+</ul>
+<h2 id="saas">SaaS</h2>
+<ul>
+<li><a href="https://blog.scaleway.com/saas-multi-tenant-vs-multi-instance-architectures/"><mark>blog.scaleway.com: SaaS Solutions - What is the difference between a multi-instance and a multi-tenant architecture</mark></a></li>
+</ul>
+<h2 id="multi-cloud">Multi Cloud</h2>
+<ul>
+<li><a href="https://acloudguru.com/blog/business/sharing-data-in-the-cloud-four-patterns-everyone-should-know">acloudguru.com: Sharing data in the cloud: 4 patterns you should know</a></li>
+<li><a href="https://architectelevator.com/cloud/hybrid-multi-cloud/">architectelevator.com: Multi Cloud Architecture: Decisions and Options</a> Multi cloud means different things to different people. A decision model helps bust the buzzwords and show the options clearly.</li>
+<li><a href="https://www.softwebsolutions.com/resources/multi-cloud-adoption-strategy.html">softwebsolutions.com: Why enterprises need to adopt a multi-cloud strategy</a></li>
+<li><a href="https://medium.com/solutions-architecture-patterns/multi-cloud-enterprise-deployment-pattern-19571604e64b">medium: Multi Cloud Enterprise Deployment Pattern</a></li>
+<li><a href="https://www.redhat.com/architect/hybrid-cloud-management-tools">redhat.com: 5 essential tools for managing hybrid cloud infrastructure</a> It&rsquo;s not just a matter of having the right tools; you must also use them correctly.</li>
+</ul>
+<h2 id="cloud-automation">Cloud Automation</h2>
+<ul>
+<li><a href="https://www.zdnet.com/article/the-year-ahead-in-devops-and-agile-more-automation-more-business-involvement-needed/">zdnet.com: The year ahead in DevOps and agile: bring on the automation, bring on the business involvement</a> DevOps has an automation problem, while agile has an identification problem. Both face organizational problems. Both are needed in the digital transformation shaping the months ahead.</li>
+<li><a href="https://thenewstack.io/what-is-cloud-automation-and-how-does-it-benefit-it-teams">thenewstack.io: What Is Cloud Automation and How Does It Benefit IT Teams? 🌟</a></li>
+<li><a href="https://www.cncf.io/blog/2021/09/29/automation-is-the-future-of-cloud-cost-optimization/">cncf.io: Automation is the future of cloud cost optimization 🌟</a></li>
+</ul>
+<h3 id="automation-glossary">Automation Glossary</h3>
+<ul>
+<li><a href="https://www.redhat.com/en/blog/red-hat-automation-glossary">redhat.com: Red Hat automation glossary 🌟</a></li>
+</ul>
+<h2 id="microservices-best-practices">Microservices Best Practices</h2>
+<ul>
+<li><a href="https://dzone.com/articles/7-microservices-best-practices-for-developers">dzone: 7 Microservices Best Practices for Developers 🌟</a> In this article, we’ll look at some microservices best practices and suggest a few ways to help you design, orchestrate, and secure your microservices architecture.</li>
+<li><a href="https://www.zdnet.com/article/when-microservices-need-event-driven-architecture/">zdnet.com: Why microservices need event-driven architecture</a> A call for greater microservice stability and alignment in legacy environments</li>
+<li><a href="https://learncsdesign.medium.com/microservices-design-patterns-91fe56a33a47">learncsdesign.medium.com: Microservices Design Patterns</a></li>
+</ul>
+<h2 id="microservice-patterns">Microservice Patterns</h2>
+<ul>
+<li><a href="https://capstonec.com/2020/10/08/cloud-native-app-architecture-patterns">capstonec.com: You Will Love These Cloud-native App Architecture Patterns 🌟</a></li>
+<li><a href="https://developers.redhat.com/articles/2021/06/14/application-modernization-patterns-apache-kafka-debezium-and-kubernetes">developers.redhat.com: Application modernization patterns with Apache Kafka, Debezium, and Kubernetes</a></li>
+<li><a href="https://blog.couchbase.com/microservices-architecture-in-couchbase/">blog.couchbase.com: 4 Patterns for Microservices Architecture in Couchbase</a></li>
+<li><a href="https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c">medium: Pragmatic Microservices 🌟</a></li>
+<li><a href="https://www.infoq.com/articles/microservices-inside-out/">infoq.com: Turning Microservices Inside-Out</a> Your microservices should be more than simple RESTful APIs. They should also be publishing important events, such as a change feed. </li>
+<li><a href="https://www.dotnetcurry.com/microsoft-azure/microservices-architecture">dotnetcurry.com: Microservices Architecture Pattern 🌟</a></li>
+<li><a href="https://geeksarray.com/blog/microservice-architecture-pattern-for-architects">geeksarray.com: Microservice Architecture Pattern for Architects 🌟</a></li>
+<li><a href="https://medium.com/@ravi.mudgil/structure-your-microservice-the-right-way-7c1e6ad08028">medium: Structure your Microservice the right way!</a></li>
+<li><a href="https://developers.redhat.com/articles/2022/01/11/5-design-principles-microservices"><mark>developers.redhat.com: 5 design principles for microservices</mark></a></li>
+<li><a href="https://elastisys.com/designing-and-deploying-scalable-applications-on-kubernetes/"><mark>elastisys.com: Principles for Designing and Deploying Scalable Applications on Kubernetes</mark></a> In this article, you will find 15 principles for how to design and deploy cloud-native applications on Kubernetes - for scalability, observability, automation &amp; security.</li>
+<li><a href="https://medium.com/@learncsdesign/microservices-design-patterns-91fe56a33a47">medium.com/@learncsdesign: Microservices Design Patterns</a></li>
+<li><a href="https://www.simform.com/blog/microservices-design-principles/">simform.com: Microservices Design Principles: Do We Really Know It Well Enough? 🌟</a> We are all well aware of microservices architecture, but do we know about its basic design principles and tenants that determine its implementation success? Read to find out more!</li>
+</ul>
+<h2 id="microservices-anti-patterns">Microservices Anti Patterns</h2>
+<ul>
+<li><a href="https://www.developer.com/design/solving-microservices-anti-patterns/">developer.com: Overcoming the Common Microservices Anti-Patterns</a></li>
+</ul>
+<h2 id="backends-for-frontends">Backends for Frontends</h2>
+<ul>
+<li><a href="https://developers.soundcloud.com/blog/service-architecture-1">developers.soundcloud.com: Service Architecture at SoundCloud — Part 1: Backends for Frontends</a></li>
+</ul>
+<h2 id="cloud-migration-checklist">Cloud Migration Checklist</h2>
+<ul>
+<li><a href="https://betterprogramming.pub/a-cloud-migration-questionnaire-for-solution-architects-dec7ffcf063e">betterprogramming.pub: A Cloud Migration Questionnaire for Solution Architects 🌟🌟</a> The questions you must ask your customers before migrating their on-premise workload to AWS Cloud:<ul>
+<li>Why do you want to migrate to the cloud?</li>
+<li>How many code changes can you afford as part of migration?</li>
+<li>What type of database are you using?</li>
+<li>What type of load balancers are you using?</li>
+<li>What application servers and versions are you using?</li>
+<li>What operating system are you using?</li>
+<li>Is your application public facing?</li>
+<li>Is your application stateful or stateless?</li>
+<li>Is your application containerized?</li>
+<li>What are the current resource requirements of the servers?</li>
+<li>How is your workload variation?</li>
+<li>What are your logging and monitoring requirements?</li>
+<li>What is your current backup strategy?</li>
+</ul>
+</li>
+<li><a href="https://www.forbes.com/sites/googlecloud/2021/10/27/3-approaches-to-a-better-cloud-migration/">forbes.com: 3 Approaches To A Better Cloud Migration</a></li>
+<li><a href="https://acloudguru.com/blog/engineering/3-ways-to-practice-migrating-workloads-to-the-cloud"><mark>acloudguru.com: 3 ways to practice migrating workloads to the cloud</mark></a> Rehosting, Replatforming &amp; Refactoring. </li>
+<li><a href="https://blog.pragmaticengineer.com/typical-migration-approaches/"><mark>blog.pragmaticengineer.com: Migrations Done Well: Typical Migration Approaches</mark></a></li>
+</ul>
+<h2 id="microservices-failures">Microservices Failures</h2>
+<ul>
+<li><a href="https://world.hey.com/joaoqalves/disasters-i-ve-seen-in-a-microservices-world-a9137a51">world.hey.com: Disasters I&rsquo;ve seen in a microservices world 🌟🌟</a></li>
+<li><a href="https://www.infoq.com/articles/microservices-seven-fail/"><mark>infoq.com: 7 Ways to Fail at Microservices</mark></a><ul>
+<li><a href="https://www.infoq.com/presentations/7-microservices-anti-patterns/">infoq.com: Seven Ways to Fail at Microservices (presentation)</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="top-microservices-frameworks">Top Microservices Frameworks</h2>
+<ul>
+<li><a href="https://www.simform.com/blog/microservices-framework/"><mark>simform.com: The Top Go-To Microservices Frameworks for a Scalable Application</mark></a> Confused about which microservices framework to use? Dive in to know about the latest frameworks, its features, and know if its the right fit for your business.</li>
+</ul>
+<h2 id="transform-legacy-java-apps-to-microservices-with-automation-tools">Transform Legacy Java Apps to Microservices with automation tools</h2>
+<ul>
+<li><a href="https://devops.com/transform-legacy-java-apps-to-microservices/">devops.com: Transform Legacy Java Apps to Microservices with vFunction</a></li>
+<li><a href="https://devops.com/vfunction-automates-conversion-of-java-apps-to-microservices/">devops.com: Function Automates Conversion of Java Apps to Microservices</a></li>
+</ul>
+<h2 id="namespaces-for-data-structuring">Namespaces for Data Structuring</h2>
+<ul>
+<li><a href="https://blog.appsignal.com/2021/01/06/microservices-monitoring-using-namespaces-for-data-structuring.html">blog.appsignal.com: Microservices Monitoring: Using Namespaces for Data Structuring 🌟</a></li>
+</ul>
+<h2 id="from-sysadmin-to-architect">From SysAdmin to Architect</h2>
+<ul>
+<li><a href="https://www.redhat.com/architect/from-sysadmin-to-architect">redhat.com: 5 strategies to shift your career from sysadmin to architect</a> Many engineers make the shift from hands-on-keyboard system administration to building architectures as an architect. Here are five ways they make the shift.</li>
+</ul>
+<h2 id="raft-consensus-algorithm">Raft Consensus Algorithm</h2>
+<ul>
+<li><a href="https://raft.github.io/">The Raft Consensus Algorithm 🌟</a> <a href="https://github.com/etcd-io/etcd">etcd</a> is a “distributed reliable key-value store for the most critical data of a distributed system”. It uses the Raft consensus algorithm which was designed to be easy to understand, to scale, and to operate. The protocol and the etcd implementation were very quickly adopted by large distributed systems like Kubernetes, large distributed databases or messaging frameworks, where consensus and strong consistency is a must. </li>
+</ul>
+<h2 id="paas">PaaS</h2>
+<ul>
+<li><a href="https://www.trustradius.com/platform-as-a-service-paas">What is Platform as a Service Software?</a></li>
+<li><a href="https://ramansharma.substack.com/p/containers-are-not-just-for-kubernetes-fa330653cbbd"><mark>ramansharma.substack.com: Containers are not just for Kubernetes</mark></a> Why cloud based PaaS and Containers make a solid combination for most developers</li>
+</ul>
+<h2 id="micro-frontend-architecture">Micro Frontend Architecture</h2>
+<ul>
+<li><a href="https://dzone.com/articles/micro-frontends-by-example-8">dzone: Micro Frontends With Example 🌟</a> Monolithic frontends are difficult to maintain, develop, test, and deploy. The solution is micro frontends. It is a type of architecture that can increase effectiveness and efficiency across teams.</li>
+<li><a href="https://levelup.gitconnected.com/micro-frontend-architecture-794442e9b325">levelup.gitconnected.com: Micro Frontend Architecture</a></li>
+<li><a href="https://dzone.com/articles/micro-frontend-architecture"><mark>dzone: Micro-Frontend Architecture</mark></a> The goal of this architecture is to see web applications as a composition of functionalities where each one is worked by independent teams.</li>
+</ul>
+<h2 id="modular-monolith">Modular Monolith</h2>
+<ul>
+<li><a href="https://www.kamilgrzybek.com/design/modular-monolith-primer/">kamilgrzybek.com: Modular Monolith: A Primer 🌟</a></li>
+</ul>
+<h2 id="from-java-ee-to-cloud-native">From Java EE To Cloud Native</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Java_Platform,_Enterprise_Edition">wikipedia: Java Enterprise Edition (Java EE)</a></li>
+<li><a href="https://www.lightbend.com/white-papers-and-reports/java-ee-to-cloud-native-modernization"><mark>lightbend.com: From Java EE To Cloud Native: The End Of The Heavyweight Era</mark> 🌟</a></li>
+</ul>
+<h2 id="monolith-to-microservices-using-the-strangler-pattern">Monolith to Microservices Using the Strangler Pattern</h2>
+<ul>
+<li><a href="https://dzone.com/articles/monolith-to-microservices-using-the-strangler-patt">dzone: Monolith to Microservices Using the Strangler Pattern 🌟</a> The Strangler Pattern is a popular design pattern to incrementally transform your monolithic application into microservices by replacing a particular functionality with a new service. Once the new functionality is ready, the old component is strangled, the new service is put into use, and the old component is decommissioned altogether.</li>
+<li><a href="https://www.overops.com/blog/strangler-pattern-how-to-keep-sane-with-legacy-monolith-applications/">overops.com: Strangler Pattern: How to Deal With Legacy Code During the Container Revolution</a></li>
+</ul>
+<h2 id="openshift-vs-kubernetes">Openshift VS Kubernetes</h2>
+<ul>
+<li><a href="https://cloudowski.com/articles/10-differences-between-openshift-and-kubernetes/">cloudowski.com: 10 most important differences between OpenShift and Kubernetes 🌟</a></li>
+<li><a href="https://dzone.com/articles/4-cluster-management-tools-to-compare">Dzone.com: 4 Cluster Management Tools to Compare</a></li>
+<li><a href="https://dzone.com/articles/kubernetes-distributions-how-do-i-choose-one">Dzone.com: A Comparison of Kubernetes Distributions</a></li>
+<li><a href="https://techerati.com/the-stack-archive/cloud/2018/10/18/openshift-in-a-world-of-kaas/">thestack.com: OpenShift in a world of KaaS 🌟</a></li>
+<li><a href="https://medium.com/levvel-consulting/the-differences-between-kubernetes-and-openshift-ae778059a90e">medium.com: The Differences Between Kubernetes and Openshift</a></li>
+<li><a href="https://blog.netsil.com/kubernetes-vs-openshift-vs-tectonic-comparing-enterprise-options-e3a34dc60519">blog.netsil.com: Kubernetes vs Openshift vs Tectonic: Comparing Enterprise Options</a></li>
+<li><a href="https://kubedex.com/redhat-openshift-vs-pivotal-pks-vs-rancher/">kubedex.com: Kubernetes On-Prem, OpenShift vs PKS vs Rancher</a><ul>
+<li><a href="https://www.reddit.com/r/kubernetes/comments/9qxeuw/openshift_vs_pks_vs_rancher/">reddit.com: OpenShift vs PKS vs Rancher 🌟</a></li>
+</ul>
+</li>
+<li><a href="https://elastisys.com/2018/11/06/openshift-features-kubernetes-counterparts/">elastisys.com: OpenShift Features and Their Kubernetes Counterparts 🌟</a></li>
+<li><a href="https://medium.com/@srikanth.k/kubernetes-what-is-it-what-problems-does-it-solve-how-does-it-compare-with-its-alternatives-937fe80b754f">medium.com: Kubernetes — What Is It, What Problems Does It Solve and How Does It Compare With Alternatives?</a></li>
+<li><a href="https://www.spec-india.com/blog/kubernetes-vs-openshift">spec-india.com: Kubernetes VS Openshift (July 23<sup>rd</sup> 2019)</a></li>
+<li><a href="https://phoenixnap.com/blog/kubernetes-vs-openshift">phoenixnap.com: Kubernetes vs OpenShift: Key Differences Compared 🌟</a></li>
+<li><a href="https://www.crn.com/slide-shows/cloud/red-hat-ceo-we-have-a-head-start-over-vmware-competitors-in-kubernetes">crn.com: Red Hat CEO: We Have A ‘Head Start’ Over VMware, Competitors In Kubernetes</a> Red Hat CEO Paul Cormier speaks with CRN about the role IBM has played in Red Hat’s channel strategy, how the company has preserved its independence under Big Blue, and why Red Hat will win in the ultra-competitive Kubernetes market.</li>
+<li><a href="https://www.redhat.com/en/resources/openshift-and-kubernetes-whats-the-difference-ebook">redhat.com ebook: Red Hat OpenShift and Kubernetes &hellip; what&rsquo;s the difference? 🌟</a> </li>
+<li><a href="https://levelup.gitconnected.com/openshift-the-next-level-of-kubernetes-6d58ad722b26">levelup.gitconnected.com: OpenShift — The Next Level of Kubernetes</a> Things you should need to know about OpenShift</li>
+<li><a href="https://www.ibm.com/cloud/blog/openshift-vs-kubernetes">ibm.com: OpenShift vs. Kubernetes: What’s the Difference?</a></li>
+<li><a href="https://awstip.com/openshift-vs-kubernetes-whats-the-difference-428af9db2c7b">awstip.com: OpenShift vs Kubernetes: What’s the Difference?</a></li>
+<li><a href="https://www.simplilearn.com/kubernetes-vs-openshift-article">simplilearn.com: Understanding The Difference Between Kubernetes Vs. Openshift</a></li>
+<li><a href="https://www.imaginarycloud.com/blog/openshift-vs-kubernetes-differences/">imaginarycloud.com: OPENSHIFT VS KUBERNETES: WHAT ARE THE DIFFERENCES</a></li>
+</ul>
+<h2 id="career-path">Career Path</h2>
+<ul>
+<li><a href="https://www.hashicorp.com/resources/kelsey-hightower-fireside-chat-an-unconventional-path-to-it-and-some-life-advice/?utm_source=linkedin">Kelsey Hightower Fireside Chat: An Unconventional Path to IT and Some Life Advice</a></li>
+<li><a href="https://www.forbes.com/sites/adunolaadeshola/2021/04/28/13-signs-youre-selling-yourself-short-in-your-career/">forbes.com: 13 Signs You’re Selling Yourself Short In Your Career</a></li>
+</ul>
+<h2 id="full-stack-developers-roadmap">Full Stack Developer&rsquo;s Roadmap</h2>
+<ul>
+<li><a href="https://dev.to/ender_minyard/full-stack-developer-s-roadmap-2k12">Full Stack Developer&rsquo;s Roadmap 🌟</a></li>
+</ul>
+<h2 id="software-development-models">Software Development Models</h2>
+<ul>
+<li><a href="https://dzone.com/articles/7-software-development-models-you-should-know">dzone: 7 Software Development Models You Should Know</a> Software Development Models are integral to the success (or failure) of a project. Here are 7 models you should know, from Waterfall to the V-Model to Scrum.</li>
+</ul>
+<h2 id="software-development-tools">Software Development Tools</h2>
+<ul>
+<li><a href="https://ubiqum.com/blog/20-software-development-tools-that-will-make-you-more-productive/">ubiqum.com: 20 Software Development Tools that will make you more productive</a></li>
+<li><a href="https://sloboda-studio.com/blog/python-tools-for-machine-learning/">sloboda-studio.com: Python Tools for Machine Learning</a></li>
+</ul>
+<h2 id="vfunction-a-system-to-transform-monolithic-java-applications-into-microservices">vFunction. A system to transform monolithic Java applications into microservices</h2>
+<ul>
+<li><a href="https://vfunction.com/">vFunction</a> vFunction accelerates your journey to cloud native by automating Java app modernization.</li>
+<li><a href="https://thenewstack.io/vfunction-transforms-monolithic-java-to-microservices/">thenewstack.io: vFunction Transforms Monolithic Java to Microservices</a></li>
+<li><a href="https://devops.com/transform-legacy-java-apps-to-microservices/">devops.com: Best of 2021 – Transform Legacy Java Apps to Microservices</a></li>
+</ul>
+<h2 id="software-in-automotive-industry">Software in Automotive Industry</h2>
+<ul>
+<li><a href="https://spectrum.ieee.org/software-eating-car">spectrum.ieee.org: How Software Is Eating the Car</a> The trend toward self-driving and electric vehicles will add hundreds of millions of lines of code to cars. Can the auto industry cope?</li>
+</ul>
+<h2 id="data-centers-in-spain">Data Centers in Spain</h2>
+<ul>
+<li><a href="https://cincodias.elpais.com/cincodias/2022/03/31/companias/1648738965_952353.html">cincodias.elpais.com: El sector del &lsquo;data center&rsquo; eleva a 6.837 millones su inversión directa en nuevos centros en España hasta 2026</a></li>
+</ul>
+<h2 id="bunch-of-images">Bunch of Images</h2>
+<details class="note">
+<summary>Click to expand!</summary>
+<p><center></p>
+<p><a href="https://www.weave.works/technologies/going-cloud-native-6-essential-things-you-need-to-know"><img alt="microservices infographic" src="../images/microservices-infographic.png" /></a></p>
+<p><a href="https://twitter.com/a_sykim"><img alt="you dont need kubenetes" src="../images/you_dont_need_kubernetes.jpg" /></a></p>
+<p><a href="https://thenewstack.io/operators-and-sidecars-are-the-new-model-for-software-delivery"><img alt="sw consumers" src="../images/softwareconsumers-1.png" /></a></p>
+<p><a href="https://proteon.com/2018/10/18/openshift-in-a-world-of-kubernetes-as-a-service/"><img alt="Openshift SaaS VS Kubernetes SaaS" src="../images/openshift-vs-kubernetes-saas.png" /></a></p>
+<p><a href="https://www.linkedin.com/feed/update/urn:li:activity:6459657167300583424"><img alt="Openshift VS Kubernetes" src="../images/openshift_vs_kubernetes.jpeg" /></a></p>
+<p><a href="https://twitter.com/brendandburns"><img alt="Kubernetes on its own is not enough" src="../images/k8s-not-enough.jpg" /></a></p>
+<p><a href="https://blog.container-solutions.com/how-mature-is-your-microservices-architecture"><img alt="how mature is your microservices architecture" src="../images/MicroservicesMaturityMatrix.jpg" /></a>
+</center></p>
+</details>
+<h2 id="videos">Videos</h2>
+<details>
+  <summary>Click to expand!</summary>
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q6i0LK4vHsU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zWgq6sd1Ols" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JZjAZIFopWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MoIdU0J0f0E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j6ow-UemzBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+</details>
+
+<h2 id="tweets">Tweets</h2>
+<details>
+  <summary>Click to expand!</summary>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Questions to quickly spot red flags of a software project:<br><br>- how long does the CI pipeline take?<br>- how long is the onboarding process?<br>- how short are the working cycles?<br>- what type of tests are integrated in the QA?<br>- is there any micromanagement?<br><br>What else would you add?</p>&mdash; Daniel Moka⚡ (@dmokafa) <a href="https://twitter.com/dmokafa/status/1358385361588781067?ref_src=twsrc%5Etfw">February 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">THREAD<br><br>The <a href="https://twitter.com/learnk8s?ref_src=twsrc%5Etfw">@Learnk8s</a> Twitter account is expanding!<br><br>Starting today you will be able to follow 4x more news:<br><br>- Security focus Kubernetes news<br>- Kubernetes for devs and architects<br>- Job offers<br>- And … a surprise (read on)<br><br>Let me explain <a href="https://t.co/pAQJYw8Fn6">pic.twitter.com/pAQJYw8Fn6</a></p>&mdash; Daniele Polencic (@danielepolencic) <a href="https://twitter.com/danielepolencic/status/1389187636493918213?ref_src=twsrc%5Etfw">May 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">just read the words &quot;large monoliths are unmaintainable&quot;<br><br>NO<br><br>poorly structured systems are unmaintainable, regardless of the cardinality of their deployment topology</p>&mdash; Matt Stine (@mstine) <a href="https://twitter.com/mstine/status/1390373898286518274?ref_src=twsrc%5Etfw">May 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Micro Services Architecture Vs Monolith Architecture:<br><br> 🧵👇🏻 <a href="https://t.co/8W8Nvi9eJk">pic.twitter.com/8W8Nvi9eJk</a></p>&mdash; Sunil Kumar (@sunilc_) <a href="https://twitter.com/sunilc_/status/1401064227347976192?ref_src=twsrc%5Etfw">June 5, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">You don&#39;t need access to a credit card or AWS account in order to learn more about DevOps. <br><br>Start for free with Docker and GitHub. <br><br>Spend time to learn how to set up docker files and combine them with GitHub actions to automate your build process.</p>&mdash; Danny (@dannysteenman) <a href="https://twitter.com/dannysteenman/status/1417069210425958402?ref_src=twsrc%5Etfw">July 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Everyone sensible in IT has been saying for years that if you buy COTS (commercial off-the-shelf software packages) you shouldn’t customize it - it’s wildly expensive and you end up with something hard to maintain and almost impossible to upgrade.</p>&mdash; Jez Humble (@jezhumble) <a href="https://twitter.com/jezhumble/status/1422924762750210049?ref_src=twsrc%5Etfw">August 4, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">COTS is for business processes that aren’t strategic to your org. So you should MODIFY YOUR BUSINESS PROCESS TO FIT WHAT THE SOFTWARE DOES OUT OF THE BOX! Sorry for shouting, I’m old.</p>&mdash; Jez Humble (@jezhumble) <a href="https://twitter.com/jezhumble/status/1422924763647778821?ref_src=twsrc%5Etfw">August 4, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The top 5 most widely used Cloud platforms according to the Stack Overflow Developer survey 2021:<br><br>1. AWS - 59%<br>2. Azure - 32% <br>3. GCP - 29%<br>4. Heroku - 21%<br>5. DigitalOcean - 18% <a href="https://t.co/56cqg70gZo">pic.twitter.com/56cqg70gZo</a></p>&mdash; Danny  (@dannysteenman) <a href="https://twitter.com/dannysteenman/status/1430390741583290375?ref_src=twsrc%5Etfw">August 25, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">💫 Cloud Knowledge 101<br><br>☁️ Public vs. Private vs. Hybrid Cloud ☁️<br><br>A quick comparison of these concepts 🧵👇</p>&mdash; Simon ☁️ (@simonholdorf) <a href="https://twitter.com/simonholdorf/status/1442170013226438660?ref_src=twsrc%5Etfw">September 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What are the differences between Virtualization (VMware) and Containerization (Docker)?<br><br>The diagram below illustrates the layered architecture of virtualization and containerization. <a href="https://t.co/3zgsUNnfXe">pic.twitter.com/3zgsUNnfXe</a></p>&mdash; Alex Xu (@alexxubyte) <a href="https://twitter.com/alexxubyte/status/1512453102380908546?ref_src=twsrc%5Etfw">April 8, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+</details>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../faq/" class="md-footer__link md-footer__link--next" aria-label="Next: Microservices FAQ &amp; Kubernetes Native" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Microservices FAQ & Kubernetes Native
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2022 <a href="https://twitter.com/nubenetes">Nubenetes</a>, <a href="https://nubenetes.com/about/">about</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCnrc0CFnNJSG2Kt4Ohdr3UA/playlists" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/nubenetes" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/nubenetes" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/redhatspain" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/groups/1937212/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://speakerdeck.com/redhatspain/stars" target="_blank" rel="noopener" title="speakerdeck.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M213.86 296H100a100 100 0 0 1 0-200h132.84a40 40 0 0 1 0 80H98c-26.47 0-26.45 40 0 40h113.82a100 100 0 0 1 0 200H40a40 40 0 0 1 0-80h173.86c26.48 0 26.46-40 0-40zM298 416a120.21 120.21 0 0 0 51.11-80h64.55a19.83 19.83 0 0 0 19.66-20V196a19.83 19.83 0 0 0-19.66-20H296.42a60.77 60.77 0 0 0 0-80h136.93c43.44 0 78.65 35.82 78.65 80v160c0 44.18-35.21 80-78.65 80z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://es.slideshare.net/RedHatSpain/favorites" target="_blank" rel="noopener" title="es.slideshare.net" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M187.7 153.7c-34 0-61.7 25.7-61.7 57.7 0 31.7 27.7 57.7 61.7 57.7s61.7-26 61.7-57.7c0-32-27.7-57.7-61.7-57.7zm143.4 0c-34 0-61.7 25.7-61.7 57.7 0 31.7 27.7 57.7 61.7 57.7 34.3 0 61.7-26 61.7-57.7.1-32-27.4-57.7-61.7-57.7zm156.6 90-6 4.3V49.7c0-27.4-20.6-49.7-46-49.7H76.6c-25.4 0-46 22.3-46 49.7V248c-2-1.4-4.3-2.9-6.3-4.3-15.1-10.6-25.1 4-16 17.7 18.3 22.6 53.1 50.3 106.3 72C58.3 525.1 252 555.7 248.9 457.5c0-.7.3-56.6.3-96.6 5.1 1.1 9.4 2.3 13.7 3.1 0 39.7.3 92.8.3 93.5-3.1 98.3 190.6 67.7 134.3-124 53.1-21.7 88-49.4 106.3-72 9.1-13.8-.9-28.3-16.1-17.8zm-30.5 19.2c-68.9 37.4-128.3 31.1-160.6 29.7-23.7-.9-32.6 9.1-33.7 24.9-10.3-7.7-18.6-15.5-20.3-17.1-5.1-5.4-13.7-8-27.1-7.7-31.7 1.1-89.7 7.4-157.4-28V72.3c0-34.9 8.9-45.7 40.6-45.7h317.7c30.3 0 40.9 12.9 40.9 45.7v190.6z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "toc.integrate", "navigation.top", "content.code.annotate", "navigation.indexes", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e87a5f81.min.js"></script>
+      
+        <script src="../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>
